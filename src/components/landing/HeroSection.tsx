@@ -105,7 +105,7 @@ const HeroSection = () => {
                 </Button>
               </ShineBorder>
               <Button variant="hero-outline" size="xl" onClick={scrollToPortfolio}>
-                See Our Portfolio (80+ Projects)
+                See Our Portfolio (40+ Projects)
               </Button>
             </div>
 
@@ -122,7 +122,7 @@ const HeroSection = () => {
                     </div>
                   ))}
                 </div>
-                <span className="text-sm text-muted-foreground">80+ Happy Clients</span>
+                <span className="text-sm text-muted-foreground">35+ Happy Clients</span>
               </div>
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map((i) => (
