@@ -2,9 +2,9 @@ import { Users, Briefcase, Globe, Star, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { icon: Users, value: "80+", label: "Active Business Clients" },
-  { icon: Briefcase, value: "80+", label: "Projects Delivered" },
-  { icon: Globe, value: "80+", label: "Global Clients" },
+  { icon: Users, value: "20+", label: "Active Business Clients" },
+  { icon: Briefcase, value: "40+", label: "Projects Delivered" },
+  { icon: Globe, value: "35+", label: "Global Clients" },
   { icon: Star, value: "4.9/5", label: "Client Satisfaction" },
   { icon: TrendingUp, value: "85%", label: "Client Retention" },
 ];
