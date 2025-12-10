@@ -1,132 +1,96 @@
-import { useState, useEffect } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { motion } from "framer-motion";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns";
 
 const testimonials = [
   {
-    quote: "Our website is stunning and we get more customer calls daily. Neo Hives truly delivers on their promises.",
-    author: "Rajesh Kumar",
+    text: "Our website is stunning and we get more customer calls daily. Neo Hives truly delivers on their promises.",
+    image: "https://randomuser.me/api/portraits/men/1.jpg",
+    name: "Rajesh Kumar",
     role: "Restaurant Owner",
-    rating: 5,
   },
   {
-    quote: "They set up our Google Business profile and we ranked in the top 3 within weeks. Amazing results!",
-    author: "Priya Sharma",
+    text: "They set up our Google Business profile and we ranked in the top 3 within weeks. Amazing results!",
+    image: "https://randomuser.me/api/portraits/women/2.jpg",
+    name: "Priya Sharma",
     role: "Boutique Owner",
-    rating: 5,
   },
   {
-    quote: "Best website package at this price—super fast delivery, high-quality work. Highly recommend Neo Hives!",
-    author: "Amit Patel",
+    text: "Best website package at this price—super fast delivery, high-quality work. Highly recommend Neo Hives!",
+    image: "https://randomuser.me/api/portraits/men/3.jpg",
+    name: "Amit Patel",
     role: "Startup Founder",
-    rating: 5,
   },
   {
-    quote: "My traffic increased by 250% after SEO optimization. The ROI has been incredible for my business.",
-    author: "Sneha Gupta",
+    text: "My traffic increased by 250% after SEO optimization. The ROI has been incredible for my business.",
+    image: "https://randomuser.me/api/portraits/women/4.jpg",
+    name: "Sneha Gupta",
     role: "Coach & Consultant",
-    rating: 5,
+  },
+  {
+    text: "Professional team, quick turnaround, and they understand small business needs perfectly.",
+    image: "https://randomuser.me/api/portraits/men/5.jpg",
+    name: "Vikram Singh",
+    role: "Fitness Studio Owner",
+  },
+  {
+    text: "From design to deployment, everything was handled smoothly. Our online presence has transformed!",
+    image: "https://randomuser.me/api/portraits/women/6.jpg",
+    name: "Anita Desai",
+    role: "Interior Designer",
+  },
+  {
+    text: "The website they built for us generates 40+ leads every month. Worth every rupee!",
+    image: "https://randomuser.me/api/portraits/men/7.jpg",
+    name: "Suresh Reddy",
+    role: "Real Estate Agent",
+  },
+  {
+    text: "Exceptional service! They even helped us set up online payments and booking system.",
+    image: "https://randomuser.me/api/portraits/women/8.jpg",
+    name: "Meera Joshi",
+    role: "Salon Owner",
+  },
+  {
+    text: "Our e-commerce site loads super fast and customers love the experience. Sales up by 180%!",
+    image: "https://randomuser.me/api/portraits/men/9.jpg",
+    name: "Karan Malhotra",
+    role: "E-commerce Entrepreneur",
   },
 ];
 
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
+
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
   return (
-    <section className="section-padding bg-gradient-navy">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <span className="inline-block bg-primary/20 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Testimonials
-          </span>
-          <h2 className="heading-section text-secondary-foreground mb-4">
+    <section className="section-padding bg-background relative overflow-hidden">
+      <div className="container-custom relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-10"
+        >
+          <div className="flex justify-center">
+            <span className="inline-block bg-orange-light text-accent-foreground px-4 py-2 rounded-full text-sm font-semibold">
+              Testimonials
+            </span>
+          </div>
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mt-5 text-center text-foreground">
             What Our Clients Say
           </h2>
-        </div>
+          <p className="text-center mt-4 text-muted-foreground">
+            See what our customers have to say about working with us.
+          </p>
+        </motion.div>
 
-        <div className="max-w-4xl mx-auto relative">
-          {/* Quote icon */}
-          <div className="absolute -top-6 left-8 md:left-12">
-            <Quote className="w-16 h-16 text-primary/30" />
-          </div>
-
-          {/* Testimonial card */}
-          <div className="bg-secondary-foreground/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-secondary-foreground/10 relative overflow-hidden">
-            <div className="relative z-10">
-              {/* Stars */}
-              <div className="flex gap-1 mb-6 justify-center">
-                {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-primary fill-primary" />
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p className="text-xl md:text-2xl text-secondary-foreground text-center font-medium leading-relaxed mb-8">
-                "{testimonials[currentIndex].quote}"
-              </p>
-
-              {/* Author */}
-              <div className="text-center">
-                <div className="w-14 h-14 mx-auto rounded-full bg-gradient-orange flex items-center justify-center mb-3">
-                  <span className="text-primary-foreground font-bold text-xl">
-                    {testimonials[currentIndex].author.charAt(0)}
-                  </span>
-                </div>
-                <p className="text-secondary-foreground font-bold">
-                  {testimonials[currentIndex].author}
-                </p>
-                <p className="text-secondary-foreground/60 text-sm">
-                  {testimonials[currentIndex].role}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
-            <button
-              onClick={goToPrevious}
-              className="w-12 h-12 rounded-full bg-secondary-foreground/10 hover:bg-primary/20 transition-colors flex items-center justify-center text-secondary-foreground"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            
-            {/* Dots */}
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    index === currentIndex
-                      ? "bg-primary w-8"
-                      : "bg-secondary-foreground/30 hover:bg-secondary-foreground/50"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <button
-              onClick={goToNext}
-              className="w-12 h-12 rounded-full bg-secondary-foreground/10 hover:bg-primary/20 transition-colors flex items-center justify-center text-secondary-foreground"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-          </div>
+        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
         </div>
       </div>
     </section>

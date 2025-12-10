@@ -9,6 +9,7 @@ import WhyChooseSection from "@/components/landing/WhyChooseSection";
 import AboutSection from "@/components/landing/AboutSection";
 import ContactFormSection from "@/components/landing/ContactFormSection";
 import Footer from "@/components/landing/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
       <AboutSection />
       <ContactFormSection />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };

@@ -1,29 +1,29 @@
-import { MessageSquare, Palette, Code, Rocket, ArrowRight } from "lucide-react";
+import { FeatureSteps } from "@/components/ui/feature-steps";
 
-const steps = [
+const features = [
   {
-    icon: MessageSquare,
-    number: "01",
+    step: "Step 1",
     title: "Business Understanding & Requirements",
-    description: "We understand your goals, industry, competitors, and design direction to create the perfect strategy.",
+    content: "We understand your goals, industry, competitors, and design direction to create the perfect strategy for your success.",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    icon: Palette,
-    number: "02",
+    step: "Step 2",
     title: "Website UI/UX & SEO-Ready Structure",
-    description: "We create a modern design + optimized structure to convert visitors into leads.",
+    content: "We create a modern design + optimized structure to convert visitors into leads with beautiful, fast-loading pages.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2070&auto=format&fit=crop",
   },
   {
-    icon: Code,
-    number: "03",
+    step: "Step 3",
     title: "Development & Google Business Setup",
-    description: "We build your website, connect domain, hosting, emails & optimize Google Business listing.",
+    content: "We build your website, connect domain, hosting, emails & optimize your Google Business listing for local visibility.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop",
   },
   {
-    icon: Rocket,
-    number: "04",
+    step: "Step 4",
     title: "Launch + Support + Growth Optimization",
-    description: "We launch smoothly, provide training, offer SEO improvements, and help you grow long-term.",
+    content: "We launch smoothly, provide training, offer SEO improvements, and help you grow long-term with ongoing support.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
   },
 ];
 
@@ -31,67 +31,17 @@ const ProcessSection = () => {
   return (
     <section className="section-padding bg-muted/30">
       <div className="container-custom">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <span className="inline-block bg-orange-light text-accent-foreground px-4 py-2 rounded-full text-sm font-semibold mb-4">
             Our Process
           </span>
-          <h2 className="heading-section text-foreground mb-4">
-            Our Strategy & <span className="text-gradient">Process</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            A proven 4-step approach to transform your online presence.
-          </p>
         </div>
 
-        <div className="relative">
-          {/* Connection line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-primary to-primary/20 -translate-y-1/2"></div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <div key={index} className="relative">
-                  {/* Arrow for mobile/tablet */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block lg:hidden absolute -bottom-4 left-1/2 -translate-x-1/2">
-                      <ArrowRight className="w-6 h-6 text-primary rotate-90" />
-                    </div>
-                  )}
-
-                  <div className="bg-card rounded-2xl p-6 shadow-soft border border-border hover:shadow-medium transition-all duration-300 relative z-10">
-                    {/* Step number */}
-                    <div className="absolute -top-4 -right-2 w-12 h-12 rounded-full bg-gradient-orange flex items-center justify-center text-primary-foreground font-bold text-sm shadow-glow">
-                      {step.number}
-                    </div>
-
-                    {/* Icon */}
-                    <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center mb-4">
-                      <Icon className="w-7 h-7 text-secondary-foreground" />
-                    </div>
-
-                    {/* Content */}
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      {step.description}
-                    </p>
-                  </div>
-
-                  {/* Arrow between steps (desktop) */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden lg:flex absolute top-1/2 -right-4 -translate-y-1/2 z-20">
-                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-                        <ArrowRight className="w-4 h-4 text-primary-foreground" />
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <FeatureSteps
+          features={features}
+          title="Our Strategy & Process"
+          autoPlayInterval={4000}
+        />
       </div>
     </section>
   );
